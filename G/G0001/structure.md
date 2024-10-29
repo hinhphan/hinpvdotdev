@@ -12,12 +12,21 @@
 ├──global
 ├──internal
 │   ├──controller
+│   │   │──example.controller.go
+│   │   .
 │   ├──initialize
 │   ├──middlewares
 │   ├──models
 │   ├──repo
+│   │   │──example.repo.go
+│   │   .
 │   ├──router
+│   │   │──router.go
+│   │   .
 │   └──service
+│      │──example.service.go
+│      .
+│   
 ├──migrations
 ├──pkg
 │   ├──logger
