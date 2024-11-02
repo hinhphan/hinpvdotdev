@@ -36,7 +36,7 @@ Network │─────────> Javascript ─> Render Tree ─> Layout 
 
 ### Size
 
-> Liên quan đến tối ưu 
+> Liên quan đến tối ưu kích thước dữ liệu, tệp tin cũng như mã nguồn
 
 + Minify & Compress
 + Code split
@@ -57,3 +57,10 @@ Network │─────────> Javascript ─> Render Tree ─> Layout 
 + Intersection Observer
 + Preload, Prefetch, Preconnect
 + Async, Defer
+
+# Tài liệu tham khảo
+
++ [https://www.youtube.com/watch?v=D7VOGwGNjQw](https://www.youtube.com/watch?v=D7VOGwGNjQw)
++ [https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5](https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5)
++ [https://viblo.asia/p/event-loop-trong-javascript-microtask-macrotask-promise-va-cac-cau-hoi-phong-van-pho-bien-GyZJZjrbJjm](https://viblo.asia/p/event-loop-trong-javascript-microtask-macrotask-promise-va-cac-cau-hoi-phong-van-pho-bien-GyZJZjrbJjm)
++ ...
