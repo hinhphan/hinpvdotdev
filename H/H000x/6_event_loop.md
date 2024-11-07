@@ -38,12 +38,108 @@
 
 + Là một hàng đợi tác vụ chờ được đẩy vào Call Stack để thực thi
 + Hoạt động theo cơ chế FIFO (First In First Out)
-+ Là nơi chứa các callback của Macrotask như: setTimeout, setInterval, element events, setImmediate, requestAnimationFrame, I/O, UI rendering,...
++ Là nơi chứa các callback của **Macrotask** như: setTimeout, setInterval, element events, setImmediate, requestAnimationFrame, I/O, UI rendering,...
++ Sẽ chỉ được thực hiện sau khi Call Stack trống và Microtask Queue trống
 + Các tên gọi khác: Event Queue, Callback Queue, Macrotask Queue,...
 + ...
 
 ## Microtask Queue
 
 + Giống với Task Queue, nhưng độ ưu tiên cao hơn
-+ Là nơi chứa các callback của Microtask như: process.nextTick, Promises, Object.observe, MutationObserver,...
++ Là nơi chứa các callback của **Microtask** như: process.nextTick, Promises, Object.observe, MutationObserver,...
++ Nếu có await thì tất cả những gì sau await sẽ được đưa vào Microtask Queue
++ Đẩy job liên tục vào Microtask Queue có thể làm trình duyệt bị treo
 + ...
+
+## Vậy thì trình tự chạy các tác vụ sẽ như nào ?
+
++ Code đồng bộ > Microtask > (Rendering) > Macrotask
++ ...
+
+## Lưu ý thêm
+
++ Main Thread (UI Thread): hầu hết code mà chúng ta viết thực thi ở thread này, nếu mà thread này bị block thì web sẽ bị treo và trình duyệt báo lỗi **Page unresponsive**
++ Worker: sẽ có thread riêng so với Main Thread kể trên
++ Mỗi thread chỉ có 1 Event Loop
++ Mỗi tab trên trình duyệt sẽ có một môi trường riêng, với Event Loop riêng
++ setTimeout() với time = 5s thì là chờ sau 5s mới cho callback vào Macrotask Queue (Nhiệm vụ check 5s nói trước đó do trình duyệt hoặc Nodejs runtime chứ k phải do Event Loop xử lý)
++ Khi await Promise, Event Loop sẽ chờ cho cái Promise đó resolve thì mới chạy tiếp
++ ...
+
+## Ví dụ: Thử phân tích thứ tự chạy của đoạn code sau và đưa ra kết quả
+
+```js
+console.log("script start");
+
+setTimeout(function() {
+  console.log("setTimeout 1 start");
+
+  setTimeout(function() {
+    console.log("nested setTimeout 1");
+
+    new Promise(function(resolve) {
+      console.log("promise in nested setTimeout 1");
+      resolve();
+    }).then(function() {
+      console.log("then in nested setTimeout 1");
+    });
+
+  }, 0);
+
+  new Promise(function(resolve) {
+    console.log("promise in setTimeout 1");
+    resolve();
+  }).then(function() {
+    console.log("then in setTimeout 1");
+
+    setTimeout(function() {
+      console.log("nested setTimeout 2");
+
+      new Promise(function(resolve) {
+        console.log("promise in nested setTimeout 2");
+        resolve();
+      }).then(function() {
+        console.log("then in nested setTimeout 2");
+      });
+
+    }, 0);
+  });
+
+  console.log("setTimeout 1 end");
+}, 0);
+
+new Promise(function(resolve) {
+  console.log("outer promise");
+  resolve();
+}).then(function() {
+  console.log("outer promise then");
+
+  return new Promise(function(resolve) {
+    console.log("nested promise");
+    resolve();
+  }).then(function() {
+    console.log("nested promise then");
+  });
+});
+
+setTimeout(function() {
+  console.log("setTimeout 2 start");
+
+  new Promise(function(resolve) {
+    console.log("promise in setTimeout 2");
+    resolve();
+  }).then(function() {
+    console.log("then in setTimeout 2");
+  });
+
+  console.log("setTimeout 2 end");
+}, 0);
+
+console.log("script end");
+```
+
+Kết quả:
+
+```js
+
+```

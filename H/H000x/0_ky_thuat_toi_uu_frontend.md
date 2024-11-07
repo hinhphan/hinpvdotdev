@@ -58,7 +58,7 @@ Network │─────────> Javascript ─> Render Tree ─> Layout 
 + Preload, Prefetch, Preconnect
 + Async, Defer
 
-# Tài liệu tham khảo
+### Tài liệu tham khảo
 
 + [https://www.youtube.com/watch?v=D7VOGwGNjQw](https://www.youtube.com/watch?v=D7VOGwGNjQw)
 + [https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5](https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5)
