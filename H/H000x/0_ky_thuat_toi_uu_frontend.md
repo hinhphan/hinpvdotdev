@@ -60,7 +60,7 @@ Network │─────────> Javascript ─> Render Tree ─> Layout 
 
 ### Tài liệu tham khảo
 
-+ [https://www.youtube.com/watch?v=D7VOGwGNjQw](https://www.youtube.com/watch?v=D7VOGwGNjQw)
-+ [https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5](https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5)
++ [https://www.youtube.com/watch?v=D7VOGwGNjQw](https://www.youtube.com/watch?v=D7VOGwGNjQw) (Đã tắt public)
++ [https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5](https://xmind.ai/share/2PNf3Dge?xid=29BOzXD5) (Đã tắt public)
 + [https://viblo.asia/p/event-loop-trong-javascript-microtask-macrotask-promise-va-cac-cau-hoi-phong-van-pho-bien-GyZJZjrbJjm](https://viblo.asia/p/event-loop-trong-javascript-microtask-macrotask-promise-va-cac-cau-hoi-phong-van-pho-bien-GyZJZjrbJjm)
 + ...
